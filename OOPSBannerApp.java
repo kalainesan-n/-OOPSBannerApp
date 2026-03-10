@@ -1,27 +1,15 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class OOPSBannerApp {
-
-    // CharacterPattern class
-    static class CharacterPattern {
-
-        char letter;
-        String[] pattern;
-
-        // constructor
-        CharacterPattern(char letter, String[] pattern) {
-            this.letter = letter;
-            this.pattern = pattern;
-        }
-
-        // getter method
-        String[] getPattern() {
-            return pattern;
-        }
-    }
 
     public static void main(String[] args) {
 
-        // Pattern for letter O
-        CharacterPattern O = new CharacterPattern('O', new String[]{
+        // Create Map to store character patterns
+        Map<Character, String[]> patternMap = new HashMap<>();
+
+        // Pattern for O
+        patternMap.put('O', new String[]{
                 " ***** ",
                 "*     *",
                 "*     *",
@@ -31,8 +19,8 @@ public class OOPSBannerApp {
                 " ***** "
         });
 
-        // Pattern for letter P
-        CharacterPattern P = new CharacterPattern('P', new String[]{
+        // Pattern for P
+        patternMap.put('P', new String[]{
                 "****** ",
                 "*     *",
                 "****** ",
@@ -42,8 +30,8 @@ public class OOPSBannerApp {
                 "*      "
         });
 
-        // Pattern for letter S
-        CharacterPattern S = new CharacterPattern('S', new String[]{
+        // Pattern for S
+        patternMap.put('S', new String[]{
                 " ***** ",
                 "*      ",
                 " ***** ",
@@ -53,14 +41,20 @@ public class OOPSBannerApp {
                 " ***** "
         });
 
-        // Word OOPS
-        CharacterPattern[] word = {O, O, P, S};
+        // Word to print
+        String word = "OOPS";
+
+        // Banner height
+        int height = 7;
 
         // Print banner
-        for (int row = 0; row < 7; row++) {
+        for (int row = 0; row < height; row++) {
 
-            for (CharacterPattern cp : word) {
-                System.out.print(cp.getPattern()[row] + "   ");
+            for (char letter : word.toCharArray()) {
+
+                String[] pattern = patternMap.get(letter);
+
+                System.out.print(pattern[row] + "   ");
             }
 
             System.out.println();
